@@ -1,5 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+Wardrobe Fit adalah sebuah web aplikasi yang dirancang khusus untuk wanita yang ingin memilih pakaian dengan tepat untuk berbagai acara khusus, seperti invitation party, hangout, dan marriage party. 
 ## Getting Started
 
 First, run the development server:
