@@ -1,41 +1,39 @@
-import { useEffect, useState } from "react";
-import Button from "./Button";
-import Skeleton from "./Skeleton";
+import { useEffect, useState } from "react"
+import Button from "./Button"
+import Skeleton from "./Skeleton"
 
 export default function Card() {
-  const [pokemon, setPokemon] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  const [pokemon, setPokemon] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
-    setIsLoading(true);
-    const controller = new AbortController();
-    const url = isEmpty(pokemon)
-      ? import.meta.env.PUBLIC_BASE_URL
-      : pokemon.next;
+    setIsLoading(true)
+    const controller = new AbortController()
+    const url = isEmpty(pokemon) ? import.meta.env.PUBLIC_BASE_URL : pokemon.next
 
     async function getPokemon() {
-      const signal = controller.signal;
-      const res = await fetch(url, { signal });
-      const data = await res.json();
+      const signal = controller.signal
+      const res = await fetch(url, { signal })
+      const data = await res.json()
 
       if (isEmpty(pokemon)) {
-        setPokemon(data);
+        setPokemon(data)
       } else {
         setPokemon((old) => ({
           ...data,
           results: [...old.results, ...data.results],
-        }));
+        }))
       }
-      setIsLoading(false);
+      setIsLoading(false)
     }
 
-    getPokemon();
+    getPokemon()
 
     return () => {
-      controller.abort();
-    };
-  }, [page]);
+      controller.abort()
+    }
+  }, [page])
 
   return isEmpty(pokemon) ? (
     <Skeleton />
@@ -54,9 +52,7 @@ export default function Card() {
                 />
               </figure>
               <div className="py-4">
-                <p className="text-slate-800 text-lg text-center">
-                  {item.name}
-                </p>
+                <p className="text-slate-800 text-lg text-center">{item.name}</p>
               </div>
             </div>
           </a>
@@ -68,12 +64,12 @@ export default function Card() {
         </Button>
       </div>
     </>
-  );
+  )
 }
 
 function isEmpty(obj) {
   for (const prop in obj) {
-    if (Object.hasOwn(obj, prop)) return false;
+    if (Object.hasOwn(obj, prop)) return false
   }
-  return true;
+  return true
 }

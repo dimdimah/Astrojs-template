@@ -1,12 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "../components/layout.astro";
+import { Image } from "astro:assets"
+import MainLayout from "../layout/MainLayout.astro"
 
-const res = await fetch(import.meta.env.PUBLIC_BASE_URL + "?limit=10");
-const { results } = await res.json();
+const res = await fetch(import.meta.env.PUBLIC_BASE_URL + "?limit=10")
+const { results } = await res.json()
 ---
 
-<Layout>
+<MainLayout>
   <section class="grid grid-cols-5 gap-3">
     {
       results.map((pokemon) => (
@@ -35,7 +35,7 @@ const { results } = await res.json();
   <div class="text-center mt-8">
     <a
       class="inline-block bg-orange-600 font-bold text-slate-100 px-4 py-2 rounded-lg hover:bg-orange-700 hover:text-slate-200"
-      href="/about">Load More Pokemon</a
+      href="/pokedex">Load More Pokemon</a
     >
   </div>
-</Layout>
+</MainLayout>

@@ -3,13 +3,13 @@ const { pathname } = Astro.url;
 
 const lists = [
   { name: "Home", url: "/" },
-  { name: "Pokemon", url: "/about" },
+  { name: "Pokemon", url: "/pokedex" },
 ];
 
 const baseClass = "hover:border-b-[3px] border-b-orange-400";
 ---
 
-<nav class="flex items-end justify-between mx-4 p-4 bg-white">
+<nav class="flex items-end justify-between p-4 bg-white">
   <h1 class="text-2xl font-semibold">Pokemon</h1>
   <ul class="flex basis-4/5 gap-x-8">
     {
